@@ -1,7 +1,11 @@
 class WelcomeController < ApplicationController
   def index
     @auth_url = authorization
-    @ut= params[:code]
+    if params.has_key?(:code)
+      cookies[:code]  = params[:code]
+      redirect_to home_path
+    end
+    @random_images = Unsplash::Photo.search("cats").first(10)
   end
 
   def authorization

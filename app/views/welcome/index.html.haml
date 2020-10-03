@@ -1,6 +1,13 @@
 
 %h1
   Bienvenido
-= link_to  "autorizar",@auth_url
-%h1
-  = "el codigo es #{params[:code]} "
+
+- unless cookies.has_key?(:code)
+  = link_to  "autorizar",@auth_url
+-else
+  .container.page-top
+    .row
+      - @random_images.each do |image|
+        .col-lg-3.col-md-4.col-xs-6.thumb
+          %a.fancybox{:href => "#{image.urls.raw}", :rel => "ligthbox"}
+            %img.zoom.img-fluid{:alt => "", :src => "#{image.urls.full}"}/
