@@ -1,3 +1,6 @@
+
 %h1
   Bienvenido
-= link_to authorization_path
+= link_to  "autorizar",@auth_url
+%h1
+  = "el codigo es #{params[:code]} "

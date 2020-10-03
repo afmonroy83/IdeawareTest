@@ -5,27 +5,23 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: postgresql
-  encoding: utf8
-  database: d82fvcpd3v22vh
-  username: miomwzkpmgaqeb
-  password: 5867543a782bfe6a2ce3496ae754a16614d2e9ae30a1cdb4ca4245254a32517c
-  host: ec2-23-23-36-227.compute-1.amazonaws.com
- # something like ec2-xxx-xx-xxx-xxxx.compute-1.amazonaws.com
-  sslmode: require
-
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
 
 development:
   <<: *default
-  database: Idealware_development
+  database: db/development.sqlite3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: Idealware_test
+  database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: Idealware_pr
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: <%= ENV['DATABASE_URL'] %>

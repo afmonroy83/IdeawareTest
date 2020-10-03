@@ -8,4 +8,16 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+  .wrapper
+    %header
+      %nav
+        .menu-icon
+          %i.fa.fa-bars.fa-2x
+        .logo
+          -# %a{:href => "#"}= image_tag( "logo-ucatolica.svg", :width=>'203', :height=>"70")
+        .menu
+          %ul
+            %li
+              %a{:href => "#{@auth_url}"} Inicio
+          
     = yield
