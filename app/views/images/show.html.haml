@@ -1,0 +1,6 @@
+
+.row
+  %h1
+    =@photo.description
+  .col-md-10.text-center
+    = image_tag @photo.urls.small, :clasv=> "rounded mx-auto d-block"

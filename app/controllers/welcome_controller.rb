@@ -5,7 +5,7 @@ class WelcomeController < ApplicationController
       cookies[:code]  = params[:code]
       redirect_to home_path
     end
-    @random_images = Unsplash::Photo.search("cats").first(10)
+    @random_images = Unsplash::Photo.search("cats").shuffle.first(12)
   end
 
   def authorization

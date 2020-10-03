@@ -9,5 +9,5 @@
     .row
       - @random_images.each do |image|
         .col-lg-3.col-md-4.col-xs-6.thumb
-          %a.fancybox{:href => "#{image.urls.raw}", :rel => "ligthbox"}
+          %a.fancybox{:href => "#{show_image_path(:id=>image.id)}", :rel => "ligthbox"}
             %img.zoom.img-fluid{:alt => "", :src => "#{image.urls.full}"}/
