@@ -19,7 +19,7 @@ class ImagesController < ApplicationController
     url = URI.parse("https://api.unsplash.com/photos/#{params[:image_id]}/like")
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
-    req = Net::HTTP::Get.new(url.to_s, {'Authorization' => "Bearer #{cookies[:TOKEN_SESSION]}"})
+    req = Net::HTTP::Post.new(url.to_s, {'Authorization' => "Bearer #{cookies[:TOKEN_SESSION]}"})
     res = http.request(req)
     redirect_to likes_path
   end
