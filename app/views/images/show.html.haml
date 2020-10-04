@@ -9,8 +9,4 @@
       = image_tag @photo.urls.small, :clasv=> "rounded mx-auto d-block"
     .col-md-12.text-center
       .col-md-2.text-center#like
-        %button.btn.btn-block.btn-primary
-          %i.fa.fa-thumbs-up Like
-:javascript
-  var token = '#{@token}';
-  var image_id = '#{@image_id}';
+        = link_to  "Me gusta",give_like_path(:image_id=>params[:id]),:class=>"btn btn-light btn-lg active", :role=>"button"
