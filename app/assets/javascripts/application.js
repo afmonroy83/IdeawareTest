@@ -17,3 +17,27 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+$( document ).on('turbolinks:load', function() {
+  $( "#like" ).click(function() {
+
+    giveLike();
+
+  });
+  function giveLike() {
+    var url = 'https://api.unsplash.com/photos/'+ image_id+'/like'
+    console.log(url);
+    var bearer_token = 'Bearer '+ token
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: {},
+      beforeSend: function (xhr) {
+        xhr.setRequestHeader('Authorization', bearer_token);
+      },
+      success: function(data){
+        alert("TE GUSTA ESTA IMAGEN");
+
+      }
+    });
+  }
+});
