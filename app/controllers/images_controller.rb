@@ -21,7 +21,6 @@ class ImagesController < ApplicationController
     http.use_ssl = true
     req = Net::HTTP::Get.new(url.to_s, {'Authorization' => "Bearer #{cookies[:TOKEN_SESSION]}"})
     res = http.request(req)
-    binding.pry
     redirect_to likes_path
   end
 
