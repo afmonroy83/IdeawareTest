@@ -1,9 +1,11 @@
 
-%h1
-  Bienvenido
 
-- unless cookies.has_key?(:code)
-  = link_to  "autorizar",@auth_url
+- unless cookies.has_key?(:TOKEN_SESSION)
+  .row
+    .col-md-12.text-center
+      %h1
+        ¡BIENVENIDO!
+      = link_to  "AUTORIZAR APP",@auth_url,:class=>"btn btn-light btn-lg active", :role=>"button"
 -else
   .container.page-top
     .row

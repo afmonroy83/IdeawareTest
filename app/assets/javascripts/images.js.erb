@@ -1,17 +1,22 @@
 $( document ).on('turbolinks:load', function() {
   $( "#like" ).click(function() {
+
     giveLike();
+
   });
   function giveLike() {
-    console.log("EL CLICK FUNCIONA");
+    var url = 'https://api.unsplash.com/photos/'+ image_id+'/like'
+    console.log(url);
+    var bearer_token = 'Bearer '+ token
     $.ajax({
       type: "POST",
       url: url,
-      data: data,
+      data: {},
       beforeSend: function (xhr) {
-        xhr.setRequestHeader('Authorization', 'Bearer t-7614f875-8423-4f20-a674-d7cf3096290e');
+        xhr.setRequestHeader('Authorization', bearer_token);
       },
       success: function(data){
+        alert("TE GUSTA ESTA IMAGEN");
 
       }
     });

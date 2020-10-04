@@ -2,7 +2,8 @@
 .row
   .col-md-12.text-center
     %h1
-      =@photo.description.upcase
+      =@photo.description.upcase unless @photo.descriptionv.nil?
+
   .row
     .col-md-12.text-center
       = image_tag @photo.urls.small, :clasv=> "rounded mx-auto d-block"
@@ -11,4 +12,5 @@
         %button.btn.btn-block.btn-primary
           %i.fa.fa-thumbs-up Like
 :javascript
-  
+  var token = '#{@token}';
+  var image_id = '#{@image_id}';

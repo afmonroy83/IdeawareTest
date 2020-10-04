@@ -1,2 +1,10 @@
-%h1 Images#listLikes
-%p Find me in app/views/images/listLikes.html.haml
+.row
+  .col-md-12.text-center
+    %h1
+      Imagenes que te gustaron
+.container.page-top
+  .row
+    - @images.each do |image|
+      .col-lg-3.col-md-4.col-xs-6.thumb
+        %a.fancybox{:href => "#{show_image_path(:id=>image["id"])}", :rel => "ligthbox"}
+          %img.zoom.img-fluid{:alt => "", :src => "#{image["urls"]["raw"]}"}/
