@@ -1,6 +1,14 @@
 
 .row
-  %h1
-    =@photo.description
-  .col-md-10.text-center
-    = image_tag @photo.urls.small, :clasv=> "rounded mx-auto d-block"
+  .col-md-12.text-center
+    %h1
+      =@photo.description.upcase
+  .row
+    .col-md-12.text-center
+      = image_tag @photo.urls.small, :clasv=> "rounded mx-auto d-block"
+    .col-md-12.text-center
+      .col-md-2.text-center#like
+        %button.btn.btn-block.btn-primary
+          %i.fa.fa-thumbs-up Like
+:javascript
+  
