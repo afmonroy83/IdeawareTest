@@ -1,10 +1,20 @@
-.row
-  .col-md-12.text-center
-    %h1
-      Imagenes que te gustaron
-.container.page-top
+
+- if cookies.has_key?(:TOKEN_SESSION)
   .row
-    - @images.each do |image|
-      .col-lg-3.col-md-4.col-xs-6.thumb
-        %a.fancybox{:href => "#{show_image_path(:id=>image["id"])}", :rel => "ligthbox"}
-          %img.zoom.img-fluid{:alt => "", :src => "#{image["urls"]["raw"]}"}/
+    .col-md-12.text-center
+      %h1
+        Imagenes que te gustaron
+  .container.page-top
+    .row
+      - @images.each do |image|
+        .col-lg-3.col-md-4.col-xs-6.thumb
+          %a.fancybox{:href => "#{show_image_path(:id=>image["id"])}", :rel => "ligthbox"}
+            %img.zoom.img-fluid{:alt => "", :src => "#{image["urls"]["raw"]}"}/
+- else
+  .row
+    .col-md-12.text-center
+      %h1
+        ¡BIENVENIDO!
+      %p
+        Es necesario que autorices a IdawareTest para continuar
+      = link_to  "AUTORIZAR APP",@auth_url,:class=>"btn btn-light btn-lg active", :role=>"button"

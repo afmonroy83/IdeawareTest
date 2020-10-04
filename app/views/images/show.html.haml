@@ -1,12 +1,20 @@
-
-.row
-  .col-md-12.text-center
-    %h1
-      =@photo.description.upcase unless @photo.descriptionv.nil?
-
+- if cookies.has_key?(:TOKEN_SESSION)
   .row
     .col-md-12.text-center
-      = image_tag @photo.urls.small, :clasv=> "rounded mx-auto d-block"
+      %h1
+        =@photo.description.upcase unless @photo.descriptionv.nil?
+
+    .row
+      .col-md-12.text-center
+        = image_tag @photo.urls.small, :clasv=> "rounded mx-auto d-block"
+      .col-md-12.text-center
+        .col-md-2.text-center#like
+          = link_to  "Me gusta",give_like_path(:image_id=>params[:id]),:class=>"btn btn-light btn-lg active", :role=>"button"
+- else
+  .row
     .col-md-12.text-center
-      .col-md-2.text-center#like
-        = link_to  "Me gusta",give_like_path(:image_id=>params[:id]),:class=>"btn btn-light btn-lg active", :role=>"button"
+      %h1
+        ¡BIENVENIDO!
+      %p
+        Es necesario que autorices a IdawareTest para continuar
+      = link_to  "AUTORIZAR APP",@auth_url,:class=>"btn btn-light btn-lg active", :role=>"button"
